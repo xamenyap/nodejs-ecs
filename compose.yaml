@@ -1,5 +1,5 @@
 services:
-  frontend:
+  node-web-app:
     image: vietanh147/node-web-app
     ports:
       - 8080:8080

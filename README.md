@@ -108,7 +108,7 @@ docker context use default
 ```
 
 # Improvements
-[ ] Update `/crete` end-point to use method `POST` instead of `GET`, and allow clients to specify employee name
-[ ] Add `/update` end-point to allow updating an employee name given their ID
-[ ] Add `/delete` end-point to allow deleting an employee given their ID
-[ ] Implement pagination for `/list` end-point
+- [ ] Update `/create` end-point to use method `POST` instead of `GET`, and allow clients to specify employee name
+- [ ] Add `/update` end-point to allow updating an employee name given their ID
+- [ ] Add `/delete` end-point to allow deleting an employee given their ID
+- [ ] Implement pagination for `/list` end-point

@@ -67,10 +67,30 @@ docker compose ps
 You may see something like this
 ```
 NAME                                               COMMAND             SERVICE             STATUS              PORTS
-task/nodejs-ecs/1d76bc7608764b3fb9a05e0a8ad2fe6e   ""                  node-web-app        Running             nodej-LoadB-262POKSPFTG8-3702ec0510d1dcf9.elb.us-east-1.amazonaws.com:8080:8080->8080/tcp
+task/nodejs-ecs/8ce1835a4add40b9b37756a7b30b6bab   ""                  mongodb             Running             nodej-LoadB-1ILT2VHIRQZ2-f8f079105d731d6c.elb.us-east-1.amazonaws.com:27017:27017->27017/tcp
+task/nodejs-ecs/c77b152f46674bcbb3c093faff80d70f   ""                  node-web-app        Running             nodej-LoadB-1ILT2VHIRQZ2-f8f079105d731d6c.elb.us-east-1.amazonaws.com:8080:8080->8080/tcp
 ```
 
 Your nodejs app can now be accessed via an URL that resembles this `nodej-LoadB-262POKSPFTG8-3702ec0510d1dcf9.elb.us-east-1.amazonaws.com:8080`
+
+There are 2 end-points to explore:
+- `/create` is an end-point to save a sample employee object into mongodb. The employee object looks like this:
+```
+{
+  "EmployeeID": 4,
+  "EmployeeName": "John Doe"
+}
+```
+- `/list` is an end-point to list all employees in mongodb. The response may look like this:
+```
+[
+  {
+    "_id": "626d2c0cd7a5b2af01208c98",
+    "EmployeeID": 4,
+    "EmployeeName": "John Doe"
+  }
+]
+```
 
 You can also check the states of all your running containers in ECS by this command
 ```
@@ -86,3 +106,9 @@ To switch back to docker default context, run this command
 ```
 docker context use default
 ```
+
+# Improvements
+[ ] Update `/crete` end-point to use method `POST` instead of `GET`, and allow clients to specify employee name
+[ ] Add `/update` end-point to allow updating an employee name given their ID
+[ ] Add `/delete` end-point to allow deleting an employee given their ID
+[ ] Implement pagination for `/list` end-point
